@@ -63,13 +63,33 @@ public:
     radius(radius)
     {}
 
+    double getX() const
+    {
+        return x;
+    }
+
+    double getY() const
+    {
+        return y;
+    }
+
+    double getZ() const
+    {
+        return z;
+    }
+
+    double getRadius() const
+    {
+        return radius;
+    }
+
 };
 
 
 
 struct Point
 {
-    double x=0.0, y=0.0;
+    double x=0.0, y=0.0, z=0.0;
 };
 
 ostream& operator << (ostream& os, Point& p)
@@ -121,7 +141,30 @@ public:
         cout << counter << endl;
         return vector<double> {0.0,0.0,0.0};
     }
+
+    bool sphereDetection(Point p)
+    //We only need to check if there's a point on the sphere at the x,y coordinates of our pixel's center
+    //Check if x,y point lies within cross section of sphere with sphere radius
+        //Check if distance from point in x,y to center of sphere is less than or equal to radius
+    //To get point on sphere, use pythagorean theorem: r^2 = x^2 + y^2 + z^2, solve for z
+        //account for sphere position r^2 = (x-h)^2 + (y-k)^2 + (z-l)^2
+        //Should have 2 answers since it should intersect in two places on sphere, use one closest to viewing plane
+    {
+
+
+
+
+
+        return 0;
+    }
+
+
+
+
+
+
 };
+
 
 
 class PrintGraphics
@@ -228,24 +271,68 @@ public:
 class VectorOps
 {
 public:
-    void dotProd()
-    {
 
+    double dotProd(vector<double> v1, vector<double> v2)
+    //So far assumes v1 is same dimensions as v2
+    //Can template this for any general container
+    {
+        double result = 0;
+        for (int i=0; i < v1.size(); i++)
+        {
+            result += v1[i] * v2[i];
+        }
+
+        return result;
     }
 
-    void unitVec()
+    vector<double> unitVec(vector<double> v1)
     {
 
+        vector<double> unitVec;
+        double sqrt_inner, magnitude = 0;
+        for (int i=0; i < v1.size(); i++)
+        {
+            sqrt_inner += v1[i] * v1[i];
+            unitVec.push_back(v1[i]);
+        }
+
+        magnitude = sqrt(sqrt_inner);
+        for (int i=0; i < unitVec.size(); i++)
+        {
+            unitVec[i] = unitVec[i] / magnitude;
+        }
+
+        return unitVec;
     }
+
+
+    double cosSimilarity(vector<double> v1, vector<double> v2)
+    //Assumes v1 and v2 are same dimensions
+    //Returns a double between 0 and 1
+    {
+        vector<double> unitVec1 = unitVec(v1);
+        vector<double> unitVec2 = unitVec(v2);
+
+        double result = dotProd(unitVec1,unitVec2);
+
+        return result;
+    }
+    
 
     void magnitude()
     {
 
     }
+
+    void normalize()
+    {
+
+    }
+
 };
 
 
-//TODO: normal vectors, create ray vectors, ray collision detection,
+//TODO: normal vectors, create ray vectors, ray collision detection, templatize
 
 
 
