@@ -44,8 +44,21 @@ private:
     double x, y, z;         //cartesian coord system position
     double theta , phi, r;  //spherical coord system position
     
+public:
 
-    //void setPositionSphere(theta2,phi2,dist_from_sphere);
+    vector<double> getLightRay(Point p)
+    //Get unit vector of light source to point on sphere
+    {
+
+        return vector<double> { 0.0, 0.0, 0.0 };
+    }
+
+
+    void setPositionSphere(double theta2, double phi2, double dist_from_sphere)
+    //To rotate light source around sphere
+    {
+
+    }
 
 };
 
@@ -83,6 +96,27 @@ public:
         return radius;
     }
 
+    double getSphereZ(Point p)
+    //Get and return the z coordinate on the sphere given an x,y coordinate
+    //To get point on sphere, use pythagorean theorem: r^2 = x^2 + y^2 + z^2, solve for z
+    //account for sphere position r^2 = (x-h)^2 + (y-k)^2 + (z-l)^2
+    //z = sqrt( r^2 - (x-h)^2 - (y-k)^2 ) + l
+    //Should have 2 answers since it should intersect in two places on sphere, use one closest to viewing plane
+    //Here, h,k,l are the center of the sphere in x,y,z
+    {
+        double sphere_z = 0.0, inner_sqrt = 0.0;
+
+        inner_sqrt 
+        = ( radius * radius ) 
+        - ( (p.x-x) * (p.x-x) )
+        - ( (p.y-y) * (p.y-y) )
+        ;
+
+        sphere_z = sqrt(inner_sqrt) + z;
+
+        return sphere_z;
+    }
+
 };
 
 
@@ -113,14 +147,19 @@ public:
     , s(s)
     {}
 
-    vector<double> cast()
+    vector<vector<double>> cast()
+    //Keep as nested or not? Which is more efficient
     {
         int counter = 0;
-        double pxl_x, pxl_y;
+        double pxl_x, pxl_y, sphere_z;
+        bool sphere_hit = 0;
         Point p;
+        vector<vector<double>> array_vector;
+        
 
         for (int row_num = 0; row_num < d.getHeight(); row_num++)
         {
+            vector<double> row_vector; //to be stored in array vector
             pxl_y = 0.5 + row_num;
 
             for (int col_num = 0; col_num < d.getWidth(); col_num++)
@@ -129,6 +168,17 @@ public:
                 p.x = pxl_x;
                 p.y = pxl_y;
 
+                sphere_hit = sphereDetection(p);
+                if (sphere_hit)
+                {
+                    sphere_z = s.getSphereZ(p);
+                    //calculate cossim here with light ray and normal vector
+                }
+                else
+                {
+                    row_vector.push_back(0.0);
+                }
+
                 cout << p << " ";
                 
                 
@@ -136,32 +186,37 @@ public:
             }
 
             cout << endl;
+            array_vector.push_back(row_vector);
         }
 
         cout << counter << endl;
-        return vector<double> {0.0,0.0,0.0};
+        return vector<vector<double>> { { 0.0,0.0,0.0 }
+                              , { 0.0,0.0,0.0 }
+                              };
+
     }
 
     bool sphereDetection(Point p)
     //We only need to check if there's a point on the sphere at the x,y coordinates of our pixel's center
     //Check if x,y point lies within cross section of sphere with sphere radius
         //Check if distance from point in x,y to center of sphere is less than or equal to radius
-    //To get point on sphere, use pythagorean theorem: r^2 = x^2 + y^2 + z^2, solve for z
-        //account for sphere position r^2 = (x-h)^2 + (y-k)^2 + (z-l)^2
-        //Should have 2 answers since it should intersect in two places on sphere, use one closest to viewing plane
     {
+        double d = 0.0, inner_sqrt = 0.0;
 
+        inner_sqrt
+        = ( (p.x-s.getX())*(p.x-s.getX()) )
+        + ( (p.y-s.getY())*(p.y-s.getY()) )
+        ;
 
+        d = sqrt(inner_sqrt);
 
-
+        if ( d <= s.getRadius())
+            return 1;
+        else
+            return 0;
 
         return 0;
     }
-
-
-
-
-
 
 };
 
@@ -184,11 +239,13 @@ public:
     //.-=oO0Q@
 
     
+    
+    void iterateInput(vector<vector<double>> raw_input) const
     //https://stackoverflow.com/questions/19719252/iterating-through-a-2d-vector-row
     //Double for-loop is bad, but using it for now
     //Also hard-coding in character positions, need to clean that up
     //Also using large if-else statements, need to find better way for that -> map?
-    void iterateInput(vector<vector<double>> raw_input) const
+    //Keep as nested or not? Which is more efficient
     {
 
         for (auto& row : raw_input)
