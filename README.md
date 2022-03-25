@@ -1,2 +1,2 @@
 # ray-tracing
-Basic ray tracing with viewing results in terminal
+So far adding ray casting with single sphere in ascii graphics
