@@ -2,9 +2,10 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include "point.hpp"
 using namespace std;
 
-
+/*
 struct Point
 {
     double x, y, z;
@@ -16,11 +17,13 @@ struct Point
     
 };
 
+
 ostream& operator << (ostream& os, Point& p)
 {
     os << "(" << p.x << ", " << p.y << ", " << p.z << ")";
     return os;
 }
+*/
 
 double dotProd(vector<double> v1, vector<double> v2)
 //So far assumes v1 is same dimensions as v2
