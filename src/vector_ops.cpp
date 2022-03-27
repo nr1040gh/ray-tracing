@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+//TODO: templatize
 namespace vector_ops{
 
 double dotProd(vector<double> v1, vector<double> v2)

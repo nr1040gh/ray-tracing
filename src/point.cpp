@@ -8,8 +8,8 @@ Point::Point(double x, double y, double z)
     , z(z)
     {}
 
-
-ostream& operator << (ostream& os, Point& p) //TODO: CHECK THIS FOR HEADER FILE!
+//https://stackoverflow.com/questions/47083328/operator-overloading-in-header-files-and-in-the-cpp-files
+ostream& operator << (ostream& os, Point& p) //TODO: Why should Point be Point::Point like above?
 {
     os << "(" << p.x << ", " << p.y << ")";
     return os;
