@@ -8,6 +8,7 @@
 #include "ray_cast.hpp"
 using namespace std;
 
+
 RayCast::RayCast(Display &d, LightSource &l_src, Sphere &s)
     : d(d)
     , l_src(l_src)
@@ -40,7 +41,6 @@ vector< vector<double> > RayCast::cast()
             sphere_hit = sphereDetection(p);
             if (sphere_hit)
             {
-                //cout << p << " ";
                 sphere_z = s.getSphereZ(p);
                 sphere_point = Point(p.x,p.y,sphere_z);
                 light_sphere_vec = vector_ops::getVector(sphere_point,l_src.getPoint());
@@ -63,16 +63,14 @@ vector< vector<double> > RayCast::cast()
             counter++;
         }
         
-        //cout << endl;
         array_vector.push_back(row_vector);
     }
     
-    //cout << counter << endl;
     return array_vector;
     
 }
     
-    
+
 bool RayCast::sphereDetection(Point p)
 //We only need to check if there's a point on the sphere at the x,y coordinates of our pixel's center
 //Check if x,y point lies within cross section of sphere with sphere radius

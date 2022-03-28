@@ -8,7 +8,6 @@ using namespace std;
 
 PrintGraphics::PrintGraphics(Display d):
     d(d)
-    //raw_input(raw_input)
     {}
     
     

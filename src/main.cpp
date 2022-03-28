@@ -1,7 +1,4 @@
-#include <iostream>
-#include <cmath>
 #include <vector>
-#include <string>
 #include "point.hpp"
 #include "display.hpp"
 #include "sphere.hpp"
