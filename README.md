@@ -1,6 +1,8 @@
 # ray-tracing
 ![Alt text](/imgs/sphere_screen_shot.png "Ray-Casting on Sphere")
-Ray-tracing implementation for C++ using native libraries. This has been done many times before but I wanted to do my own implementation of it without referencing any other's code. **Currently, the program is able to successfully implement ray-casting on a sphere with zero perpective** (orthoganal rays to viewing plane) and is oriented with a left-handed coordinate system (positive y "up", positive x "right", positive z "out"). Currently the graphics are displayed in the terminal with ASCII graphics.  
+Ray-tracing implementation for C++ using as close as to native libraries as possible. This has been done many times before but I wanted to do my own implementation of it without referencing any other's code. **Currently, the program is able to successfully implement ray-casting on a sphere with zero perpective (orthoganal rays to viewing plane). The window displays an animated sphere with a light source revolving around it, rendered as ASCII art in the terminal.** 
+
+I use a cartesian coordinate system oriented with a left-handed rule (positive y "up", positive x "right", positive z "out"). To revolve the light source around the sphere, I used a spherical coordinate system (using physics convention of azimuthal being phi and polar being theta) centered at the sphere. 
 
 The current characters are:  
 " ", ".", "-", "=", "o", "O", "Q", "0"   
@@ -12,7 +14,6 @@ To compile the program I used g++. You may need to substitute the `g++` command 
 2. run `g++ main.cpp point.cpp sphere.cpp display.cpp light_source.cpp ray_cast.cpp print_graphics.cpp vector_ops.cpp -o main`
 3. run `./main.exe` 
 
-
 ## Limitations
 Currently, the rays from the viewing plane come out perpendicular to it; there is no perspective added. The math used to calculate normal vectors and sphere detection by a ray are only valid for a sphere as well. The light source is also a point light source. All of these limitations greatly decrease the complexity of the math involved and allows us to do the calculations by using simple vector operations.  
 
@@ -22,7 +23,7 @@ The graphics are displayed using ascii characters for each pixel on the viewing 
 
 ## To-Do
 * Reformat / refractor code.
-* Using the current functionality, animate the light source revolving around the sphere with ASCII animation.
+* Update documentation
 * Project rays from corners of pixel and average intensity
 * Add perspective.
 * Add additional objects.
