@@ -1,3 +1,9 @@
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+#include <stdlib.h> 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -18,7 +24,7 @@ void PrintGraphics::iterateInput(vector< vector<double> > raw_input) const
 //Also using large if-else statements, need to find better way for that -> map?
 //Keep as nested or not? Which is more efficient
 {
-    
+    string outstring = "";
     for (auto& row : raw_input)
     {
         for (auto& col : row)
@@ -27,43 +33,66 @@ void PrintGraphics::iterateInput(vector< vector<double> > raw_input) const
             //cout << col;
             if ( (col <= 1.0) && (col >= 0.875) )
             {
-                cout << chars[7];
+                //cout << chars[7];
+                outstring += chars[7];
             }
             else if ( (col < 0.875) && (col >= 0.75) )
             {
-                cout << chars[6];
+                //cout << chars[6];
+                outstring += chars[6];
             }
             else if ( (col < 0.75) && (col >= 0.625) )
             {
-                cout << chars[5];
+                //cout << chars[5];
+                outstring += chars[5];
             }
             else if ( (col < 0.625) && (col >= 0.5) )
             {
-                cout << chars[4];
+                //cout << chars[4];
+                outstring += chars[4];
             }
             else if ( (col < 0.5) && (col >= 0.375) )
             {
-                cout << chars[3];
+                //cout << chars[3];
+                outstring += chars[3];
             }
             else if ( (col < 0.375) && (col >= 0.25) )
             {
-                cout << chars[2];
+                //cout << chars[2];
+                outstring += chars[2];
             }
             else if ( (col < 0.25) && (col >= 0.125) )
             {
-                cout << chars[1];
+                //cout << chars[1];
+                outstring += chars[1];
             }
             else if ( (col < 0.125) && (col >= 0.0) )
             {
-                cout << chars[0];
+                //cout << chars[0];
+                outstring += chars[0];
             }
             else
             {
-                cout << chars[0];
+                //cout << chars[0];
+                outstring += chars[0];
             }
             
         }
         
-        cout << endl;
+        //cout << "\n";
+        outstring += "\n";
+
+
     }
+    cout << outstring;
+    
+    //https://stackoverflow.com/questions/8486181/how-to-make-a-loading-animation-in-console-application-written-in-c
+    //https://www.softwaretestinghelp.com/cpp-sleep/
+    //https://mathbits.com/MathBits/CompSci/Introduction/clear.htm
+
+    //franerate = 30fps -> 
+    Sleep((1.0/60.0)*1000.0);
+    //cout << "\033[2J";
+    cout << flush;
+    system ("CLS");
 }

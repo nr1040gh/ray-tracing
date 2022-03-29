@@ -12,13 +12,12 @@ class RayCast
 {
 private:
     Display d;
-    LightSource l_src;
     Sphere s;
     
 public:
-    RayCast(Display &d, LightSource &l_src, Sphere &s);
+    RayCast(Display &d, Sphere &s);
     
-    std::vector< std::vector<double> > cast();
+    std::vector< std::vector<double> > cast(LightSource l_src);
     
     bool sphereDetection(Point p);
     
