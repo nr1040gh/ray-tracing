@@ -6,6 +6,13 @@ The current characters are:
 " ", ".", "-", "=", "o", "O", "Q", "0"   
 in order of ascending brightness
 
+## How to Use  
+To compile the program I used g++. You may need to substitute the `g++` command using the appropriate program and the `/` or `\` depending on your operating system. For compiling and linking the program:
+1. `cd` into the `src` folder
+2. run `g++ main.cpp point.cpp sphere.cpp display.cpp light_source.cpp ray_cast.cpp print_graphics.cpp vector_ops.cpp -o main`
+3. run `./main.exe` 
+
+
 ## Limitations
 Currently, the rays from the viewing plane come out perpendicular to it; there is no perspective added. The math used to calculate normal vectors and sphere detection by a ray are only valid for a sphere as well. The light source is also a point light source. All of these limitations greatly decrease the complexity of the math involved and allows us to do the calculations by using simple vector operations.  
 

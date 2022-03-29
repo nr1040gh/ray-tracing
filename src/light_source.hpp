@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "point.hpp"
+#include "sphere.hpp"
 
 class LightSource          //point light source
 {
@@ -18,10 +19,24 @@ public:
     
     
     void setPositionSphere(double theta2, double phi2, double dist_from_sphere);
+
+
+    void revolveLightSource(double theta2, double phi2, Sphere s, double dist_from_sphere);
     
+
+    double getX();
+
+
+    double getY();
+
+
+    double getZ();
+
     
     Point getPoint();
     
 };
+
+std::ostream& operator << (std::ostream& os, Point& p);
 
 #endif

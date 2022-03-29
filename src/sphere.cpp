@@ -52,8 +52,9 @@ double Sphere::getSphereZ(Point p)
     - ( (p.y-center_y) * (p.y-center_y) )
     ;
     
-    sphere_z = sqrt(inner_sqrt) + center_z;
-    
+    //sphere_z = sqrt(inner_sqrt) + center_z; //THIS GIVES US THE POINT ON THE SPHERE FURTHEST FROM US (positive z direction from center)
+    sphere_z = center_z - sqrt(inner_sqrt); //WE WANT THE POINT CLOSEST TO THE VIEWING SECTION (NEGATIVE Z DIRECTION FROM CENTER)
+
     return sphere_z;
 }
 
