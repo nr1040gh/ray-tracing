@@ -8,6 +8,9 @@ The current characters are:
 " ", ".", "-", "=", "o", "O", "Q", "0"   
 in order of ascending brightness
 
+## Video  
+[![Watch the video](/imgs/youtube_screenshot.png)](https://youtu.be/LtOQ-mvyUOo)
+
 ## How to Use  
 To compile the program I used g++. You may need to substitute the `g++` command using the appropriate program and the `/` or `\` depending on your operating system. For compiling and linking the program:
 1. `cd` into the `src` folder
@@ -32,17 +35,17 @@ The graphics are displayed using ascii characters for each pixel on the viewing 
 * Project image onto sphere and change intensity of image on sphere.
 
 ## Inspiration / similar projects:
-https://www.quora.com/How-do-I-color-a-sphere-in-computer-graphics-using-C-without-external-libraries - Vladislav Zorov's response
-
-https://www.youtube.com/watch?v=QkETiyYWh2o
-https://youtu.be/A-yAkqONnuU
-https://youtu.be/bDpXw1_FVRg
-https://youtu.be/ZYGJQqhMN1U
-https://youtu.be/hYMZsMMlubg
+https://www.quora.com/How-do-I-color-a-sphere-in-computer-graphics-using-C-without-external-libraries - Vladislav Zorov's response  
+  
+https://www.youtube.com/watch?v=QkETiyYWh2o  
+https://youtu.be/A-yAkqONnuU  
+https://youtu.be/bDpXw1_FVRg  
+https://youtu.be/ZYGJQqhMN1U  
+https://youtu.be/hYMZsMMlubg  
 
 ## Reference material
-https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection for normal vector of sphere
-https://www.povray.org/documentation/3.7.0/t2_2.html for coordinate system
-https://www.youtube.com/watch?v=gBPNO6ruevk background info
-https://www.youtube.com/watch?v=Ahp6LDQnK4Y background info
-https://www.quora.com/How-do-I-color-a-sphere-in-computer-graphics-using-C-without-external-libraries Vladislav Zorov's explanation of brightness
+https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection for normal vector of sphere  
+https://www.povray.org/documentation/3.7.0/t2_2.html for coordinate system  
+https://www.youtube.com/watch?v=gBPNO6ruevk background info  
+https://www.youtube.com/watch?v=Ahp6LDQnK4Y background info  
+https://www.quora.com/How-do-I-color-a-sphere-in-computer-graphics-using-C-without-external-libraries Vladislav Zorov's explanation of brightness  
