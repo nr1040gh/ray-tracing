@@ -6,15 +6,19 @@
 #include "vector_ops.hpp"
 #include "ray_cast.hpp"
 #include "print_graphics.hpp"
-
-
-
-#include <iostream>////////////////////////////////////////
 using namespace std;
 
 
 
 void animation(LightSource l_src, Sphere s)
+/**
+ * @brief Animate the light source revolving around the sphere and update the terminal display to show the results
+ *      Animate by changing the phi and theta spherical coordinates of the light source and calculate and update the x,y,z coordinates
+ *      Animates until program is killed
+ * 
+ * @param l_src    Global point light source that will have its position updated
+ * @param s        The sphere which we are casting the rays at
+ */
 {
     double x_start = l_src.getX();
     double y_start = l_src.getY();
@@ -47,44 +51,19 @@ void animation(LightSource l_src, Sphere s)
         {
             new_theta -= 360;
         }
-        //cout << new_theta << " " << new_phi << endl;
 
         l_src.revolveLightSource(new_theta,new_phi,s,dist_from_sphere);
         raw_input = rc.cast(l_src);
-        p.iterateInput(raw_input);
-        
-        
-            
+        p.iterateInput(raw_input);        
     }
-
-
 
 }
 
 
-
-
-
-
 int main()
-{
-    /*
-    Display d(50,80);
+{ 
     Sphere s(20.0, 40.0, 20.0, 50.0);
-    //LightSource l_src(80.0,90.0,00.0);  //screenshot l_src
-    LightSource l_src(40.0,20.0,100.0); //Place directly behind sphere, 80 units away from outside of shere
-    PrintGraphics p(d);
-    RayCast rc(d, l_src, s);
-    
-    vector< vector<double> > raw_input = rc.cast();
-    p.iterateInput(raw_input);
-    */
-
-    
-    Sphere s(20.0, 40.0, 20.0, 50.0);
-    LightSource l_src(40.0,20.0,100.0); //Place directly behind sphere, 30 units away from outside of shere
-    //LightSource l_src(40.0,20.0,130.0); //Place directly in front sphere, 30 units away from outside of shere
-    
+    LightSource l_src(40.0,20.0,100.0); //Place directly behind sphere, 30 units away from outside of shere    
     
     animation(l_src,s);
     
