@@ -9,7 +9,6 @@
 using namespace std;
 
 
-
 void animation(LightSource l_src, Sphere s)
 /**
  * @brief Animate the light source revolving around the sphere and update the terminal display to show the results

@@ -22,7 +22,8 @@ void PrintGraphics::iterateInput(vector< vector<double> > raw_input) const
 //Double for-loop is bad, but using it for now
 //Also hard-coding in character positions, need to clean that up
 //Also using large if-else statements, need to find better way for that -> map?
-//Keep as nested or not? Which is more efficient
+//Keep input as nested vector or not? Which is more efficient
+//Frame rate is also hard-coded!!! Should not clear screen if not animated!!!
 {
     string outstring = "";
     for (auto& row : raw_input)
@@ -30,69 +31,59 @@ void PrintGraphics::iterateInput(vector< vector<double> > raw_input) const
         for (auto& col : row)
         {
             
-            //cout << col;
             if ( (col <= 1.0) && (col >= 0.875) )
             {
-                //cout << chars[7];
                 outstring += chars[7];
             }
             else if ( (col < 0.875) && (col >= 0.75) )
             {
-                //cout << chars[6];
                 outstring += chars[6];
             }
             else if ( (col < 0.75) && (col >= 0.625) )
             {
-                //cout << chars[5];
                 outstring += chars[5];
             }
             else if ( (col < 0.625) && (col >= 0.5) )
             {
-                //cout << chars[4];
                 outstring += chars[4];
             }
             else if ( (col < 0.5) && (col >= 0.375) )
             {
-                //cout << chars[3];
                 outstring += chars[3];
             }
             else if ( (col < 0.375) && (col >= 0.25) )
             {
-                //cout << chars[2];
                 outstring += chars[2];
             }
             else if ( (col < 0.25) && (col >= 0.125) )
             {
-                //cout << chars[1];
                 outstring += chars[1];
             }
             else if ( (col < 0.125) && (col >= 0.0) )
             {
-                //cout << chars[0];
                 outstring += chars[0];
             }
+            
+            //If cosine similarity result is less than 0, treat as 0 for now
             else
             {
-                //cout << chars[0];
                 outstring += chars[0];
             }
             
         }
-        
-        //cout << "\n";
+      
         outstring += "\n";
 
-
     }
+
+    //Created as one big string so we can clear terminal and print all at once
     cout << outstring;
     
     //https://stackoverflow.com/questions/8486181/how-to-make-a-loading-animation-in-console-application-written-in-c
     //https://www.softwaretestinghelp.com/cpp-sleep/
     //https://mathbits.com/MathBits/CompSci/Introduction/clear.htm
-
-    //franerate = 30fps -> 
+    //framerate = 60fps, clear after printing
     Sleep((1.0/60.0)*1000.0);
-    //cout << "\033[2J";
     cout << flush;
     system ("CLS");
 }

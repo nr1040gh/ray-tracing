@@ -23,24 +23,14 @@ void LightSource::setPositionSphere(double theta2, double phi2, double dist_from
 
 void LightSource::revolveLightSource(double theta2, double phi2, Sphere s, double dist_from_sphere)
 /**
- * 
+ * Coordinate change:
  * https://en.wikipedia.org/wiki/Spherical_coordinate_system
  * x = rcos(phi)sin(theta)
  * z = rsin(phi)sin(theta)
  * y = rcos(theta)
+ * 
+ * Take theta and phi as degrees, change to radians here
  */
-//To rotate light source around sphere
-//Take theta and phi as degrees, change to radians here
-//physics convention (azimuthal is phi, polar is theta), still in left handed, z-out coordinate system (swap y and z in typical z-up right handed coordinate system)
-//theta=0 -> point completely in y axis
-//theta=pi/2 -> completely perpendicular to y axis
-//phi=0 -> point completely in x axis
-//phi=pi/2 -> completely perpendicular to z axis, point completely in z axis
-//
-//
-//
-//
-
 {
     double new_x, new_y, new_z;
     double rad_conversion = M_PI / 180.0;

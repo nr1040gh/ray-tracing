@@ -4,8 +4,6 @@
 Display::Display(const int height, const int width)
     : height(height)
     , width(width)
-    , xmax(width)
-    , ymax(height)
     {}
     
 
